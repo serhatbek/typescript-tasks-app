@@ -1,3 +1,4 @@
+import './FloatLabel.scss';
 import { ReactNode, useState } from 'react';
 
 type FloatLabelProps = {
