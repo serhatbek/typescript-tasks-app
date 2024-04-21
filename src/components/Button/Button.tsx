@@ -7,9 +7,9 @@ type ButtonType = 'submit' | 'button';
 type ButtonProps = {
   btnAction: () => void;
   type: ButtonType;
-  iconLeft: ReactNode;
-  iconRight: ReactNode;
-  addClass: string;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
+  addClass?: string;
   children: ReactNode;
 };
 

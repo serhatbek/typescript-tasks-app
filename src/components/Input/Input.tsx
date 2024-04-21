@@ -5,12 +5,26 @@ type InputProps = {
   type: string;
   value: string;
   placeholder: string;
+  onChange: () => void;
+  onKeyDown: () => void;
 };
 
-const Input = ({ type, value, placeholder, ...props }: InputProps) => {
+const Input = ({
+  type,
+  value,
+  placeholder,
+  onChange,
+  onKeyDown,
+}: InputProps) => {
   return (
     <FloatLabel value={value} label={placeholder}>
-      <input {...props} type={type} value={value} className='input' />
+      <input
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        type={type}
+        value={value}
+        className='input'
+      />
     </FloatLabel>
   );
 };

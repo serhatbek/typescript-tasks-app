@@ -1,4 +1,4 @@
-@use '../../assets/css/settings/colors';
+@use '../../assets/css/settings/colors' as c;
 
 .float-label {
   height: 40px;
@@ -13,7 +13,7 @@
     pointer-events: none;
     left: 16px;
     top: 10px;
-    color: $text-2;
+    color: c.$text-2;
     z-index: 1;
     transition: 0.2s ease all;
   }
