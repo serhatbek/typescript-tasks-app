@@ -6,27 +6,31 @@ import { useState } from 'react';
 const AddTask = () => {
   const [inputValue, setInputValue] = useState('');
 
-  const handleAddTask = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-    console.log('add item', inputValue);
+    // console.log('add item', inputValue);
   };
 
-  const handleKeyPress = () => {
-    console.log('key press');
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    setInputValue((e.target as HTMLInputElement).value);
+    // console.log('key press', inputValue);
   };
+
+  const handleAddTask = () => {};
 
   return (
-    <div className='add-todo'>
+    <div className='add-todo background'>
       <Input
         value={inputValue}
-        onChange={() => handleAddTask}
-        onKeyDown={handleKeyPress}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
         placeholder='Add Task'
         type='text'
       />
       <Button
-        btnAction={() => handleAddTask}
+        btnAction={handleAddTask}
         type='button'
+        addClass='btn'
         iconLeft={<IoMdAddCircle />}
       >
         Add

@@ -5,8 +5,8 @@ type InputProps = {
   type: string;
   value: string;
   placeholder: string;
-  onChange: () => void;
-  onKeyDown: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
 const Input = ({
