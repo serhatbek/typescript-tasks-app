@@ -10,16 +10,6 @@ const AddTask = () => {
   const [inputValue, setInputValue] = useState('');
   const dispatch = useAppDispatch();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-    // console.log('add item', inputValue);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    setInputValue((e.target as HTMLInputElement).value);
-    // console.log('key press', inputValue);
-  };
-
   const handleAddTask = () => {
     //NOTE - trim removes white spaces from start and end
     if (inputValue.trim() !== '') {
@@ -32,6 +22,16 @@ const AddTask = () => {
       );
     }
     setInputValue('');
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleAddTask();
+    }
   };
 
   return (

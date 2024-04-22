@@ -10,7 +10,7 @@ type ButtonProps = {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   addClass?: string;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 const Button = ({
@@ -20,7 +20,6 @@ const Button = ({
   type,
   addClass,
   children,
-  ...props
 }: ButtonProps) => {
   return (
     <button
@@ -30,7 +29,6 @@ const Button = ({
         'btn--right-icon': iconRight,
       })}
       type={type}
-      {...props}
     >
       {iconLeft ? iconLeft : null}
       {children}
