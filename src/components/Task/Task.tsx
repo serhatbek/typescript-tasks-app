@@ -4,6 +4,7 @@ import './Task.scss';
 import { RiDeleteBin6Fill, RiEdit2Fill, RiEditBoxFill } from 'react-icons/ri';
 import { useState } from 'react';
 import { useAppDispatch } from '../../hooks/hooks';
+import { deleteTask } from '../../redux/Tasks/tasksSlice';
 
 const Task = (props) => {
   const { id, text, isChecked } = props.taskItem;
@@ -14,7 +15,9 @@ const Task = (props) => {
 
   const handleItemChecked = () => {};
 
-  const handleDelete = () => {};
+  const handleDelete = (id: string) => {
+    dispatch(deleteTask(id));
+  };
 
   return (
     <div className='todo-item flex'>

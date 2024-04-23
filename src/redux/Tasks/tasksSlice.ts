@@ -13,7 +13,12 @@ const tasksSlice = createSlice({
     addTask: (state, action: PayloadAction<Task>) => {
       state.taskList = [...state.taskList, action.payload];
     },
-    deleteTask: () => {},
+    deleteTask: (state, action: PayloadAction<string>) => {
+      const updatedTaskList = state.taskList.filter(
+        (task) => task.id !== action.payload
+      );
+      state.taskList = updatedTaskList;
+    },
     editTask: () => {},
     isTaskChecked: () => {},
     reset: (state) => {
