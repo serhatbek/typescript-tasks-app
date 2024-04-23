@@ -1,9 +1,9 @@
-export type Task = {
+export type TaskProps = {
   id: string;
   text: string;
   isChecked: boolean;
 };
 
 export type TaskState = {
-  taskList: Task[];
+  taskList: TaskProps[];
 };

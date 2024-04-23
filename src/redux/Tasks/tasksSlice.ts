@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { type PayloadAction } from '@reduxjs/toolkit';
-import { type Task, TaskState } from '../../types';
+import { type TaskProps, TaskState } from '../../types';
 
 const initialState: TaskState = {
   taskList: [],
@@ -10,7 +10,7 @@ const tasksSlice = createSlice({
   name: 'Tasks',
   initialState,
   reducers: {
-    addTask: (state, action: PayloadAction<Task>) => {
+    addTask: (state, action: PayloadAction<TaskProps>) => {
       state.taskList = [...state.taskList, action.payload];
     },
     deleteTask: (state, action: PayloadAction<string>) => {
@@ -19,8 +19,17 @@ const tasksSlice = createSlice({
       );
       state.taskList = updatedTaskList;
     },
-    editTask: () => {},
-    isTaskChecked: () => {},
+    editTask: (state, action: PayloadAction<TaskProps>) => {
+      state.taskList = state.taskList.map((task) =>
+        task.id === action.payload.id ? action.payload : task
+      );
+    },
+    checkedTask: (state, action: PayloadAction<TaskProps>) => {
+      state.taskList = state.taskList.map((task) =>
+        task.id === action.payload.id ? action.payload : task
+      );
+      //   state.taskList = updatedTaskList;
+    },
     reset: (state) => {
       state.taskList = [];
     },
@@ -32,7 +41,7 @@ export const {
   addTask,
   deleteTask,
   editTask,
-  isTaskChecked,
+  checkedTask,
   reset,
   filterTaskList,
 } = tasksSlice.actions;
