@@ -1,5 +1,5 @@
 import './TasksContainer.scss';
-import { AddTask, TaskItem } from '../../components/index';
+import { AddTask, TaskFooter, TaskItem } from '../../components';
 import { useAppSelector } from '../../hooks/hooks';
 // import TaskItem from './../TaskItem/TaskItem';
 
@@ -15,6 +15,7 @@ const TasksContainer = () => {
           <TaskItem key={task.id} item={task} />
         ))}
       </div>
+      <TaskFooter />
     </div>
   );
 };

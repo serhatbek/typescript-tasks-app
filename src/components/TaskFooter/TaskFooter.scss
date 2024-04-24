@@ -1,0 +1,6 @@
+@use '../../assets/css/settings/colors' as c;
+
+.task-footer {
+  color: c.$text;
+  justify-content: space-between;
+}

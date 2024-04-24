@@ -1,6 +1,6 @@
 import './TaskItem.scss';
 import { type TaskProps } from '../../types';
-import { Button, Input } from '../../components/index';
+import { Button, Input } from '../../components';
 import { RiDeleteBin6Fill, RiEdit2Fill, RiEditBoxFill } from 'react-icons/ri';
 import { FaCheck } from 'react-icons/fa';
 import { useEffect, useState } from 'react';

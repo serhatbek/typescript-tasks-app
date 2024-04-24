@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { type PayloadAction } from '@reduxjs/toolkit';
 import { type TaskProps, TaskState } from '../../types';
+import { useStoreLocally } from '../../hooks/hooks';
 
+const storedTaskList = localStorage.getItem('taskList');
 const initialState: TaskState = {
-  taskList: [],
+  taskList: storedTaskList ? JSON.parse(storedTaskList) : [],
 };
 
 const tasksSlice = createSlice({
@@ -12,37 +14,34 @@ const tasksSlice = createSlice({
   reducers: {
     addTask: (state, action: PayloadAction<TaskProps>) => {
       state.taskList = [...state.taskList, action.payload];
+      useStoreLocally(state.taskList);
     },
     deleteTask: (state, action: PayloadAction<string>) => {
       const updatedTaskList = state.taskList.filter(
         (task) => task.id !== action.payload
       );
       state.taskList = updatedTaskList;
+      useStoreLocally(state.taskList);
     },
     editTask: (state, action: PayloadAction<TaskProps>) => {
       state.taskList = state.taskList.map((task) =>
         task.id === action.payload.id ? action.payload : task
       );
+      useStoreLocally(state.taskList);
     },
     checkedTask: (state, action: PayloadAction<TaskProps>) => {
       state.taskList = state.taskList.map((task) =>
         task.id === action.payload.id ? action.payload : task
       );
-      //   state.taskList = updatedTaskList;
+      useStoreLocally(state.taskList);
     },
-    reset: (state) => {
+    resetTask: (state) => {
       state.taskList = [];
+      useStoreLocally(state.taskList);
     },
-    filterTaskList: () => {},
   },
 });
 
-export const {
-  addTask,
-  deleteTask,
-  editTask,
-  checkedTask,
-  reset,
-  filterTaskList,
-} = tasksSlice.actions;
+export const { addTask, deleteTask, editTask, checkedTask, resetTask } =
+  tasksSlice.actions;
 export default tasksSlice.reducer;
