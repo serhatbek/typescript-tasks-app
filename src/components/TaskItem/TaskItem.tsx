@@ -2,7 +2,7 @@ import './TaskItem.scss';
 import { type TaskProps } from '../../types';
 import { Button, Input } from '../../components/index';
 import { RiDeleteBin6Fill, RiEdit2Fill, RiEditBoxFill } from 'react-icons/ri';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useAppDispatch } from '../../hooks/hooks';
 import {
   checkedTask,
@@ -43,14 +43,20 @@ const Task = ({ item }: TaskProps) => {
     dispatch(deleteTask(id));
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleEdit();
+    }
+  };
+
   return (
     <div className='task-item flex'>
       {edit ? (
-        <Input
-          value={name}
-          onKeyPress={handleKeyPress}
-          onChange={handleChange}
-        />
+        <Input value={name} onKeyDown={handleKeyDown} onChange={handleChange} />
       ) : (
         <label className='flex'>
           <input
