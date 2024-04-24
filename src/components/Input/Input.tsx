@@ -4,7 +4,7 @@ import FloatLabel from '../FloatLabel/FloatLabel';
 type InputProps = {
   type: string;
   value: string;
-  placeholder: string;
+  placeholder?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };

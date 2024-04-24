@@ -2,7 +2,8 @@ import './TaskItem.scss';
 import { type TaskProps } from '../../types';
 import { Button, Input } from '../../components/index';
 import { RiDeleteBin6Fill, RiEdit2Fill, RiEditBoxFill } from 'react-icons/ri';
-import { ChangeEvent, useState } from 'react';
+import { FaCheck } from 'react-icons/fa';
+import { useState } from 'react';
 import { useAppDispatch } from '../../hooks/hooks';
 import {
   checkedTask,
@@ -56,16 +57,21 @@ const Task = ({ item }: TaskProps) => {
   return (
     <div className='task-item flex'>
       {edit ? (
-        <Input value={name} onKeyDown={handleKeyDown} onChange={handleChange} />
+        <Input
+          type='text'
+          value={name}
+          onKeyDown={handleKeyDown}
+          onChange={handleChange}
+        />
       ) : (
-        <label className='flex'>
+        <label className='flex task-item__desc'>
           <input
             type='checkbox'
             checked={isChecked}
             onChange={handleItemChecked}
           />
-          <span className='checkmark'></span>
-          <span>{text}</span>
+          <span className='checkmark flex'>{isChecked && <FaCheck />}</span>
+          <span className='task-item__desc__text'>{text}</span>
         </label>
       )}
 
