@@ -3,7 +3,7 @@ import { type TaskProps } from '../../types';
 import { Button, Input } from '../../components/index';
 import { RiDeleteBin6Fill, RiEdit2Fill, RiEditBoxFill } from 'react-icons/ri';
 import { FaCheck } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../hooks/hooks';
 import {
   checkedTask,
@@ -53,6 +53,20 @@ const Task = ({ item }: TaskProps) => {
       handleEdit();
     }
   };
+
+  const handleClickOutside = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (edit && target.tagName !== 'INPUT') {
+      handleEdit();
+    }
+  };
+  useEffect(() => {
+    if (edit) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [edit]);
 
   return (
     <div className='task-item flex'>
