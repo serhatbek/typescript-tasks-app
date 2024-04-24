@@ -17,7 +17,6 @@ const TaskFooter = () => {
       <Button type='button' addClass='btn' btnAction={handleClearAll}>
         Clear All
       </Button>
-      {/* <SelectButton options={selectOptions} defaultVal='All' /> */}
     </footer>
   );
 };
