@@ -1,7 +1,6 @@
 import './TasksContainer.scss';
 import { AddTask, TaskFooter, TaskItem } from '../../components';
 import { useAppSelector } from '../../hooks/hooks';
-// import TaskItem from './../TaskItem/TaskItem';
 
 const TasksContainer = () => {
   const taskList = useAppSelector((state) => state.Tasks.taskList);

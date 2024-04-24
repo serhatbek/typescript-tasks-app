@@ -1,5 +1,5 @@
 import './TaskItem.scss';
-import { type TaskProps } from '../../types';
+import { TaskProps } from '../../types';
 import { Button, Input } from '../../components';
 import { RiDeleteBin6Fill, RiEdit2Fill, RiEditBoxFill } from 'react-icons/ri';
 import { FaCheck } from 'react-icons/fa';
@@ -11,7 +11,7 @@ import {
   editTask,
 } from '../../redux/Tasks/tasksSlice';
 
-const Task = ({ item }: TaskProps) => {
+const Task = ({ item }: { item: TaskProps }) => {
   const { id, text, isChecked } = item;
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(text);
