@@ -1,7 +1,9 @@
 @use '../../assets/css/settings/colors' as c;
 
 .todo-container {
-  padding: 0 10px;
+  min-height: 100vh;
+  justify-content: flex-start;
+
   h2 {
     color: c.$text;
     font-size: 34px;

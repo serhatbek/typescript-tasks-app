@@ -6,7 +6,7 @@ const TasksContainer = () => {
   const taskList = useAppSelector((state) => state.Tasks.taskList);
 
   return (
-    <div className='todo-container container flex flex--col flex--align flex--justify'>
+    <div className='todo-container container flex flex--col flex--align'>
       <h2>Tasks List</h2>
       <AddTask />
       <div className='box background'>
